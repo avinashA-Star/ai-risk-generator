@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AI Risk Generator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <h1>AI Risk Generator</h1>
+      <p class="lede">Describe an AI system and get a scored risk register, a likelihood × impact matrix, and suggested mitigations.</p>
+    </div>
+    <button id="theme" type="button" aria-label="Toggle theme">Theme</button>
+  </div>
+  <div class="grid">
+    <div class="panel" id="form">
+      <label for="name">System name</label>
+      <input type="text" id="name" placeholder="e.g. Loan screening assistant">
+      <label for="desc">What does it do?</label>
+      <textarea id="desc" placeholder="Short description of the use case"></textarea>
+      <label for="domain">Domain</label>
+      <select id="domain">
+        <option value="health">Healthcare</option><option value="finance">Finance and lending</option>
+        <option value="hr">Hiring and HR</option><option value="edu">Education</option>
+        <option value="gov">Government and public services</option><option value="legal">Legal</option>
+        <option value="support">Customer support</option><option value="content">Marketing and content</option>
+        <option value="dev">Software development</option><option value="other" selected>Other</option>
+      </select>
+      <div class="lbl">Data it uses</div>
+      <div class="opts" id="data">
+        <label><input type="checkbox" value="personal">Personal data</label>
+        <label><input type="checkbox" value="sensitive">Health or financial</label>
+        <label><input type="checkbox" value="biometric">Biometric</label>
+        <label><input type="checkbox" value="children">Children’s data</label>
+      </div>
+      <div class="lbl">Decision autonomy</div>
+      <div class="opts">
+        <label><input type="radio" name="auto" value="0">Advises only</label>
+        <label><input type="radio" name="auto" value="1" checked>Human approves</label>
+        <label><input type="radio" name="auto" value="2">Fully automated</label>
+      </div>
+      <div class="lbl">Who is exposed to it?</div>
+      <div class="opts">
+        <label><input type="radio" name="expo" value="0" checked>Internal staff</label>
+        <label><input type="radio" name="expo" value="1">Customers</label>
+        <label><input type="radio" name="expo" value="2">General public</label>
+      </div>
+      <label for="src">Model source</label>
+      <select id="src">
+        <option value="api">Third-party API</option><option value="open">Open-source model</option><option value="inhouse">Built in-house</option>
+      </select>
+      <label for="impact">Impact if it is wrong</label>
+      <select id="impact">
+        <option value="2">Low: minor inconvenience</option><option value="3" selected>Medium: financial or time loss</option>
+        <option value="4">High: harm to people or serious loss</option><option value="5">Critical: safety or legal exposure</option>
+      </select>
+      <div class="lbl">Type</div>
+      <div class="opts"><label><input type="checkbox" id="gen">Generates text, images or code</label></div>
+      <button class="primary" id="go" type="button">Generate risk assessment</button>
+      <div class="actions"><button class="link" id="ex" type="button">Load an example</button></div>
+    </div>
+    <div class="panel" id="out"><div class="empty">Fill in the form and select Generate risk assessment.</div></div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
